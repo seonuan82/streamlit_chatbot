@@ -21,9 +21,9 @@ def reset_chat():
 st.title("Chatbot")  # 챗봇 상단에 나올 이름.
 
 # 새로운 대화
-_, version, button = st.columns([3, 1])   # 한 행 구성 (한 행을 4줄로 나눠서 3줄은 빈칸_으로, 1줄에는 btn_col 내용을 넣기.)
+_, version, button = st.columns([2, 1, 1])   # 한 행 구성 (한 행을 4줄로 나눠서 2줄은 빈칸_으로, 1줄에는 version 정보와 button을 넣기.)
 with version:
-    st.markdown()
+    st.markdown(st.session_state.version)
 with button:
     st.button("새 대화", on_click=reset_chat, use_container_width=True)   # use_container_width : 할당된 공간에 최대한 채우기.
 
