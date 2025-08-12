@@ -1,5 +1,5 @@
 import streamlit as st
-from utility.llm import get_response, get_revised_response   # GPT 호출을 위해 우리가 제작한 라이브러리. prompt 등이 포함됨.
+from utility.llm import get_basic_response, get_revised_response   # GPT 호출을 위해 우리가 제작한 라이브러리. prompt 등이 포함됨.
 
 
 # ─────────────────────────────────────────
@@ -45,7 +45,7 @@ if input:
     if input == 'password':
       st.session_state.version = 'Revised'
       try:
-          assistant_text = get_response(input)
+          assistant_text = get_basic_response(input)
       except TypeError:   # API 오류가 난 경우, default로 출력
           assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
     else:
