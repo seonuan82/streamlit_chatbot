@@ -59,3 +59,5 @@ if input:
     with st.chat_message("assistant"):
         st.markdown(assistant_text)
     st.session_state.messages.append({"role": "assistant", "content": assistant_text})
+
+st.rerun()
