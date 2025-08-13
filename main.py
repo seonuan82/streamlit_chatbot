@@ -52,16 +52,16 @@ if input:
 
     # API persona 변경하며 output 만들기
     try:
-        if text == "password":
+        if input == "password":
             st.session_state.version = "Revised"
-            assistant_text = "새로운 버전의 답변이에요." + get_revised_response(text)
+            assistant_text = "새로운 버전의 답변이에요." + get_revised_response(input)
         elif text == "return":
             st.session_state.version = "Default"
-            assistant_text = "원래 버전으로 돌아갈게요." + get_basic_response(text)
+            assistant_text = "원래 버전으로 돌아갈게요." + get_basic_response(input)
         elif st.session_state.version == "Revised":
-            assistant_text = "계속 새로운 버전입니다." + get_revised_response(text)
+            assistant_text = "계속 새로운 버전입니다." + get_revised_response(input)
         else:
-            assistant_text = get_basic_response(text)
+            assistant_text = get_basic_response(input)
     except:
         assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
 
