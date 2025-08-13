@@ -38,7 +38,7 @@ input = st.chat_input("질문")
 # 사용자 메시지 저장 및 표시
 if input:
     st.session_state.messages.append({"role": "user", "content": input})
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar="🎃"):
         st.markdown(input)
 
     # API persona 변경하며 output 만들기
@@ -70,7 +70,7 @@ if input:
 
 
     # 어시스턴트 메시지 저장/표시
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="🤖"):
         st.markdown(assistant_text)
     st.session_state.messages.append({"role": "assistant", "content": assistant_text})
     st.rerun()  # 버전 변경 재렌더링
