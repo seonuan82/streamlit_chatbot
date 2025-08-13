@@ -55,7 +55,7 @@ if input:
         if input == "password":
             st.session_state.version = "Revised"
             assistant_text = "새로운 버전의 답변이에요." + get_revised_response(input)
-        elif text == "return":
+        elif input == "return":
             st.session_state.version = "Default"
             assistant_text = "원래 버전으로 돌아갈게요." + get_basic_response(input)
         elif st.session_state.version == "Revised":
