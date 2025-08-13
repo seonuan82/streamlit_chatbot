@@ -58,7 +58,7 @@ if input:
     
     elif st.session_state.version == 'Revised':
         try:
-          assistant_text = get_revised_response(input)
+          assistant_text = '계속 새로운 버전입니다.' + get_revised_response(input)
         except TypeError:   # API 오류가 난 경우, default로 출력
           assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
     
