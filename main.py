@@ -49,8 +49,20 @@ if input:
         except TypeError:   # API 오류가 난 경우, default로 출력
           assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
 
-    else:
+    elif input == 'return':
         st.session_state.version = 'Default'
+        try:
+          assistant_text = '원래 버전으로 돌아갈게요.' + get_basic_response(input)
+        except TypeError:   # API 오류가 난 경우, default로 출력
+          assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
+    
+    elif st.session_state.version == 'Revised':
+        try:
+          assistant_text = get_revised_response(input)
+        except TypeError:   # API 오류가 난 경우, default로 출력
+          assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
+    
+    else:
         try:
           assistant_text = get_basic_response(input)
         except TypeError:   # API 오류가 난 경우, default로 출력
