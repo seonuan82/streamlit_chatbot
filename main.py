@@ -43,17 +43,21 @@ if input:
 
     # API persona 변경하며 output 만들기
     if input == 'password':
-      st.session_state.version = 'Revised'
-      try:
+        st.session_state.version = 'Revised'
+        try:
           assistant_text = '새로운 버전의 답변이에요.' + get_revised_response(input)
-      except TypeError:   # API 오류가 난 경우, default로 출력
+          st.rerun()  # 버전 변경 즉시 재렌더링
+        except TypeError:   # API 오류가 난 경우, default로 출력
           assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
+
     else:
-      st.session_state.version = 'Default'
-      try:
-          assistant_text = get_basic_response(input)
-      except TypeError:   # API 오류가 난 경우, default로 출력
+        st.session_state.version = 'Default'
+        st.rerun()
+        try:
+          assistant_text = '새로운 버전의 답변이에요.' + get_revised_response(input)
+        except TypeError:   # API 오류가 난 경우, default로 출력
           assistant_text = "질문을 잘 이해하지 못했어요. 다시 입력해 주세요."
+
 
     # 어시스턴트 메시지 저장/표시
     with st.chat_message("assistant"):
